@@ -4,10 +4,36 @@ import "fmt"
 
 var message string
 
+type User struct {
+	name   string
+	age    int
+	sex    string
+	weight int
+	height int
+}
+
+func (u User) receiver() {
+	fmt.Println(u.name, u.age, u.sex, u.weight, u.height)
+}
 func init() {
 	message = "I am using init() fucntion right now..."
 }
 func main() {
+	user1 := User{"Lana", 17, "female", 48, 163}
+	user1.receiver()
+
+	users := map[string]int{
+		"Anel":    18,
+		"Aruzhan": 18,
+		"Aliya":   16,
+	}
+	// add new key and value to users map
+	users["Hamza"] = 17
+	// delete key from users map
+	delete(users, "Aruzhan")
+	for key, value := range users {
+		fmt.Println(key, value)
+	}
 	// from init function
 	fmt.Println(message)
 	//find minimum
